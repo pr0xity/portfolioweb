@@ -1,0 +1,10 @@
+version: "3"
+services:
+  portfolioweb:
+    restart: always
+    build:
+      dockerfile: Dockerfile
+      context: .
+    environment:
+      - VIRTUAL_HOST=sakarias.codes
+      - LETSENCRYPT_HOST=sakarias.codes
