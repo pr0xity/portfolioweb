@@ -1,2 +1,2 @@
 # portfolioweb
-A portfolio website build in OG
+A portfolio website built using GO.
