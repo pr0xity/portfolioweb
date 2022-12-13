@@ -10,5 +10,5 @@ FROM alpine:3.17
 RUN apk --no-cache add ca-certificates
 WORKDIR /usr/bin
 COPY --from=build /go/src/app/bin /go/bin
-EXPOSE 80
-ENTRYPOINT /go/bin/portfolioweb --port 80
+EXPOSE 8091
+ENTRYPOINT /go/bin/portfolioweb --port 8091
