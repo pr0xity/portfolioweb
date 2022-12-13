@@ -24,7 +24,7 @@ func main() {
 	})
 
 	fmt.Printf("Starting server on port %s", PORT)
-	if err := http.ListenAndServe(PORT, r); err != nil {
+	if err := http.ListenAndServe(fmt.Sprintf(":%s", PORT), r); err != nil {
 		panic(fmt.Sprintf("Could not start http server: %v", err))
 	}
 }
