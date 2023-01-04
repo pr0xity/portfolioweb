@@ -2,14 +2,22 @@ package main
 
 import (
 	"fmt"
+	"log"
 	"net/http"
+	"os"
 
 	"github.com/gorilla/mux"
+	"github.com/joho/godotenv"
 )
 
 // const PORT = os.Getenv("APP_PORT") // This is how you would do it in production
-const PORT = "8091"
+// const PORT = "8091"
 
+func init() {
+	if err := godotenv.Load("config/env/.env"); err != nil {
+		log.Fatalf("Error loading .env file: %v", err)
+	}
+}
 func main() {
 	r := mux.NewRouter()
 
@@ -23,8 +31,8 @@ func main() {
 <p>Here you will soon be able to se my awesome resume</p>`)
 	})
 
-	fmt.Printf("Starting server on port %s", PORT)
-	if err := http.ListenAndServe(fmt.Sprintf(":%s", PORT), r); err != nil {
+	fmt.Printf("Starting server on port %s", os.Getenv("APP_PORT"))
+	if err := http.ListenAndServe(fmt.Sprintf(":%s", os.Getenv("APP_PORT")), r); err != nil {
 		panic(fmt.Sprintf("Could not start http server: %v", err))
 	}
 }
